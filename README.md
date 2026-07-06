@@ -7,7 +7,7 @@ We use a three-stage framework that consists of (1) an implicit neural represent
 The INR model builds on the work of Zha, R., et al. [1] ([NAF](https://github.com/Ruyi-Zha)) with modifications described in our paper. The fast diffusion model builds on the work of et al. [2]([DDPM](https://github.com/openai/improved-diffusion)) 
 
 
-<img src="./cbct_extension.pdf" alt="Inference Overview" width="800">
+<img src="./cbct_extension.png" alt="Inference Overview" width="800">
 
 # How to Run This Repository
 
