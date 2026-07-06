@@ -1,0 +1,6 @@
+{
+    "stubPath": "out",
+    "reportPrivateImportUsage": false,
+    "typeCheckingMode": "basic",
+    "ignore": [ "*" ],
+}
