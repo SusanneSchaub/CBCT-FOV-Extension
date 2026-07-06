@@ -21,7 +21,7 @@ We used the publicly available MMDental dataset that can be downloaded [here](ht
 
 ## Step 3: Training of the INR
 
-1. Run the INR training in the naf directory with:
+1. Run the INR training in the [`naf`](naf/) directory with:
 
    ```bash
    python train_adapt.py
