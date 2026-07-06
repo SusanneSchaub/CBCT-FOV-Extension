@@ -6,7 +6,6 @@ We use a three-stage framework that consists of (1) an implicit neural represent
 
 The INR model builds on the work of Zha, R., et al. [1] ([NAF](https://github.com/Ruyi-Zha)) with modifications described in our paper. The fast diffusion model builds on the work of et al. [2]([DDPM](https://github.com/openai/improved-diffusion)) 
 
-
 <img src="./cbct_extension.png" alt="Inference Overview" width="800">
 
 # How to Run This Repository
@@ -14,6 +13,7 @@ The INR model builds on the work of Zha, R., et al. [1] ([NAF](https://github.co
 Follow the steps below to set up and run this repository.
 
 ## Step 1: Set Up the Environments
+For the data generation and image reconstruction, first install [TIGRE toolbox](https://github.com/CERN/TIGRE). For the INR model install the requirements in [`requirements.txt`](naf/requirements.txt).
 As we use several already existing projects with a lot of contradicting requirements, we have to define separate environments. 
 Create the required Conda environments by running the following commands:
 ```bash
@@ -49,7 +49,7 @@ We used the publicly available MMDental dataset that can be downloaded [here](ht
    ```
 
 ## Acknowledgements
-We thank the authors of the publicly available [TIGRE toolbox] (https://github.com/CERN/TIGRE). 
+We thank the authors of the publicly available [TIGRE toolbox](https://github.com/CERN/TIGRE). 
 
 ## References
 Zha, R., et al.: "NAF: Neural Attenuation Fields for Sparse-View CBCT Reconstruction" arXiv preprint arXiv:2209.14540 (2022).
