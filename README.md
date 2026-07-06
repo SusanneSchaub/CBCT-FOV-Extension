@@ -21,7 +21,7 @@ We used the publicly available MMDental dataset that can be downloaded [here](ht
 
 ## Step 3: Training of the INR
 
-1. In [`naf(dataGenerator`](naf/dataGenerator/), prepare the training data for INR by running
+1. In [`naf/dataGenerator`](naf/dataGenerator/), prepare the training data for INR by running
 
    ```bash
    python MMDental.py
@@ -35,14 +35,16 @@ We used the publicly available MMDental dataset that can be downloaded [here](ht
 
 ## Step 4: Training of the fast DDPM
 
-1. Adapt the `run.sh` script:
-   - Set the GPU to use on the second line (`SAMPLE="..."`)
-   - Change the `--data_dir`, `--model_path`, and `--output_dir` options to reflect the correct paths for your setup
-
-2. Run the sampling process:
+1. In [`inr-diffusion`](inr-diffusion/), train the diffusion model by running
 
    ```bash
-   bash run.sh
+   bash run.sh train
+   ```
+
+2. Run the sampling process with:
+
+   ```bash
+   bash run.sh sample
    ```
 
 ## Acknowledgements
