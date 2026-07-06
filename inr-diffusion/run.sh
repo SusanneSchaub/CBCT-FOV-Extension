@@ -1,5 +1,5 @@
 #!/bin/bash
-# Run this from the cbct-artifact-reduction folder
+# Run this from the ddpm_model folder
 
 USAGE_TEXT="Usage: ./run train|sample|resume [additional_arguments]"
 if [[ -z "$1" ]]; then
@@ -20,7 +20,7 @@ else
 fi
 
 # GENERAL VARIABLES
-LOG_DIR="/raid/cian/susanne.schaub/INR-Diffusion/pigjaws/train_inr_3steps_other_test/"
+LOG_DIR=""
 SAMPLE_DIR="samples"
 MODEL_DIR="models"
 
@@ -38,10 +38,8 @@ SAMPLE_SCRIPT="$PROJECT_ROOT/cbct_artifact_reduction/scripts/sample_test_series.
 export PYTHONPATH=$PROJECT_ROOT:$PYTHONPATH
 
 
-MODEL_PATH2="/raid/cian/susanne.schaub/INR-Diffusion/train_inr_1000steps/view1/model150000.pt"
-MODEL_PATH1="/raid/cian/susanne.schaub/INR-Diffusion/train_inr_1000steps/view1/model150000.pt"
-#MODEL_PATH2="/raid/cian/susanne.schaub/INR-Diffusion/pigjaws/train_ossart_3steps_other_test/model100000.pt"
-#MODEL_PATH1="/raid/cian/susanne.schaub/INR-Diffusion/pigjaws/train_ossart_3steps_other_test/model100000.pt"
+MODEL_PATH1="xxx.pt"
+
 
 # Catch all extra arguments after train|sample|resume|watch
 EXTRA_ARGS="${*:2}"
@@ -78,7 +76,7 @@ elif [[ "$1" == "resume" ]]; then
 elif [[ "$1" == "sample" ]]; then
     echo "Starting sampling"
     echo "Running $SAMPLE_SCRIPT"
-    python $SAMPLE_SCRIPT --model_path1 $MODEL_PATH1 --model_path2 $MODEL_PATH2 $MODEL_FLAGS $DIFFUSION_FLAGS $SAMPLE_FLAGS $EXTRA_ARGS
+    python $SAMPLE_SCRIPT --model_path1 $MODEL_PATH1 $MODEL_FLAGS $DIFFUSION_FLAGS $SAMPLE_FLAGS $EXTRA_ARGS
 elif [[ "$1" == "watch" ]]; then
     echo "Starting continuously sampling"
     echo "Running $CONTINUOUSLY_SAMPLE_SCRIPT"
