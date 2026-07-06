@@ -32,8 +32,15 @@ We used the publicly available MMDental dataset that can be downloaded [here](ht
    ```bash
    python train_adapt.py
    ```
+   
+## Step 4: Iterative Reconsruction
+Run an iterative reconstruction with the INR rendered projections:
+   ```bash
+   python bla.py
+   ```
+Create a dataset with this code for the training of the diffusion model.
 
-## Step 4: Training of the fast DDPM
+## Step 5: Training of the fast DDPM
 
 1. In [`inr-diffusion`](inr-diffusion/), train the diffusion model by running
 
@@ -51,10 +58,8 @@ We used the publicly available MMDental dataset that can be downloaded [here](ht
 We thank the authors of the publicly available [TIGRE toolbox](https://github.com/CERN/TIGRE). 
 
 ## References
-Zha, R., et al.: "NAF: Neural Attenuation Fields for Sparse-View CBCT Reconstruction" arXiv preprint arXiv:2209.14540 (2022).
+Zha, R., et al.: "NAF: Neural Attenuation Fields for Sparse-View CBCT Reconstruction." arXiv preprint arXiv:2209.14540 (2022).
 
-Nichol, A. Q., & Dhariwal, P. (2021). "Improved denoising diffusion probabilistic models" arXiv preprint arXiv:2102.09672 (2021).
+Nichol, A. Q., & Dhariwal, P. (2021). "Improved denoising diffusion probabilistic models." arXiv preprint arXiv:2102.09672 (2021).
 
-Durrer, A., et al.: "fastWDM3D: Fast and Accurate 3D Healthy Tissue Inpainting" arXiv preprint arXiv:2507.13146 (2025).
-
-
+Durrer, A., et al.: "fastWDM3D: Fast and Accurate 3D Healthy Tissue Inpainting." arXiv preprint arXiv:2507.13146 (2025).
