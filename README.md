@@ -6,7 +6,7 @@ We use a three-stage framework that consists of (1) an implicit neural represent
 
 The INR model builds on the work of Zha, R., et al. [1] ([NAF](https://github.com/Ruyi-Zha)) with modifications described in our paper. The fast diffusion model builds on the work of et al. [2]([DDPM](https://github.com/openai/improved-diffusion)) 
 
-## Preprocessing
+
 <img src="./cbct_extension.pdf" alt="Inference Overview" width="800">
 
 # How to Run This Repository
@@ -53,6 +53,7 @@ We thank the authors of the publicly available [TIGRE toolbox] (https://github.c
 
 ## References
 Zha, R., et al.: "NAF: Neural Attenuation Fields for Sparse-View CBCT Reconstruction" arXiv preprint arXiv:2209.14540 (2022).
+
 Durrer, A., et al.: "Denoising Diffusion Models for Inpainting of Healthy Brain Tissue." arXiv preprint arXiv:2402.17307 (2024).
 
 
