@@ -1,0 +1,57 @@
+exp:
+  expname: jaw_50
+  expdir:  
+  datadir: ""
+  load_model: "" 
+network:
+  net_type: mlp
+  num_layers: 4 
+  hidden_dim:  32 
+  skips: [2]
+  out_dim: 1
+  last_activation: sigmoid
+  bound: 0.3 
+  first_omega_0: 30.0
+  hidden_omega_0: 30.0
+  use_siren: False
+ 
+outpainting:
+   outpaint: 75 
+   
+encoder:
+  encoding: hashgrid 
+  input_dim: 3
+  num_levels: 20
+  level_dim: 4 
+  base_resolution: 16 
+  log2_hashmap_size: 21 
+render:
+  n_samples: 320 
+  n_fine: 0
+  perturb: True
+  raw_noise_std: 0.
+  netchunk: 409600
+train:
+  epochs_train: 1 #6000
+  epochs_adapt: 152
+  steps: 100000000
+  n_batch: 8
+  n_batch_adapt: 16 
+  n_rays: 1024 
+  lrate: 0.0001 
+  inner_lr: 0.01
+  lr_adapt: 0.001 
+  lr_adapt_adam_muon: 0.0001
+  lr_adapt_muon: 0.00001
+  inner_steps: 2
+  inner_steps_adapt: 1
+  lrate_gamma: 0.1
+  lrate_step: 100000000 
+  resume: False
+  use_muon: False
+  lrate_muon_maml: 0.001 
+log:
+  i_eval: 150  # Epoch for evaluation
+  i_eval_adapt: 150
+  i_save: 150  # Epoch for saving
+  
