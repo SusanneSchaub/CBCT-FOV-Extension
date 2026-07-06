@@ -4,7 +4,7 @@ This is the official repository for the Paper "Field-of-View Extension in Dental
 
 We use a three-stage framework that consists of (1) an implicit neural representation (INR) for estimating missing portions of the cropped projection data, (2) an iterative reconstruction for generating a secondary volumetric image with improved anatomical consistency and (3) a fast diffusion model for image enhancement.
 
-The INR model builds on the work of Zha, R., et al. [1] ([NAF](https://github.com/Ruyi-Zha)) with modifications described in our paper. The fast diffusion model builds on the work of et al. [2]([DDPM](https://github.com/openai/improved-diffusion)) 
+The INR model builds on the work of Zha, R., et al. [1] ([NAF](https://github.com/Ruyi-Zha)) with modifications described in our paper. The fast diffusion model builds on the work of et al. [2]([DDPM](https://github.com/openai/improved-diffusion)). We accelerated the sampling process by incorporating modifications proposed in [3]([fastWDM](https://github.com/AliciaDurrer/fastWDM3D))
 
 <img src="./cbct_extension.png" alt="Inference Overview" width="800">
 
@@ -53,6 +53,8 @@ We thank the authors of the publicly available [TIGRE toolbox](https://github.co
 ## References
 Zha, R., et al.: "NAF: Neural Attenuation Fields for Sparse-View CBCT Reconstruction" arXiv preprint arXiv:2209.14540 (2022).
 
-Durrer, A., et al.: "Denoising Diffusion Models for Inpainting of Healthy Brain Tissue." arXiv preprint arXiv:2402.17307 (2024).
+Nichol, A. Q., & Dhariwal, P. (2021). "Improved denoising diffusion probabilistic models" arXiv preprint arXiv:2102.09672 (2021).
+
+Durrer, A., et al.: "fastWDM3D: Fast and Accurate 3D Healthy Tissue Inpainting" arXiv preprint arXiv:2507.13146 (2025).
 
 
