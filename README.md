@@ -55,7 +55,7 @@ Create a dataset with this code for the training of the diffusion model.
    ```
 
 ## Acknowledgements
-We thank the authors of the publicly available [TIGRE toolbox](https://github.com/CERN/TIGRE). 
+We thank the authors of the publicly available [4] ([TIGRE toolbox](https://github.com/CERN/TIGRE)). 
 
 ## References
 Zha, R., et al.: "NAF: Neural Attenuation Fields for Sparse-View CBCT Reconstruction." arXiv preprint arXiv:2209.14540 (2022).
