@@ -263,10 +263,6 @@ def generator(matPath, configPath, outputPath, nbr, show=False):
     viz.image(visualize(imgFDK_crop[150,]))
     viz.image(visualize(imgFDK_crop[200,]))
     viz.image(visualize(imgFDK_crop[-1,]))
-    new_image = nib.Nifti1Image(imgFDK_crop, affine=np.eye(4))
-    nib.save(new_image, '/home/s.schaub/img_Off.nii.gz')
-
-    breakpoint()
 
     viz.image(visualize(imgFDK[0,]))
     viz.image(visualize(imgFDK[50,]))
