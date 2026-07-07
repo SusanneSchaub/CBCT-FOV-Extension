@@ -58,20 +58,12 @@ def main():
     )
 
     dataset = PairedNiftiDataset(
-        root_dir="/raid/cian/susanne.schaub/data_for_diffusion/iterative_recos_slices/training"
+        root_dir=""
     )
 
 
     logger.log("creating dataloader...")
-    # client = lakefs_own.CustomBoto3Client(f"{cfg.LAKEFS_DATA_REPOSITORY}")
-    # inpaintingSliceDataset = dataset.InpaintingSliceDataset(
-    #     client,
-    #     os.path.join(cfg.ROOT_DIR, args.data_csv),
-    #     "reco_slices_256",
-    #     random_masks=args.random_masks,
-    #     augment_data=args.augment_data,
-    #     log_transform=args.log_transform,
-    # )
+
 
     num_epochs = args.num_epochs
     logger.log("training...")

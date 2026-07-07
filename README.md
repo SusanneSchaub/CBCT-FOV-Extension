@@ -58,8 +58,10 @@ Create a dataset with this code for the training of the diffusion model.
 We thank the authors of the publicly available [4] ([TIGRE toolbox](https://github.com/CERN/TIGRE)). 
 
 ## References
-Zha, R., et al.: "NAF: Neural Attenuation Fields for Sparse-View CBCT Reconstruction." arXiv preprint arXiv:2209.14540 (2022).
+[1] Zha, R., et al.: "NAF: Neural Attenuation Fields for Sparse-View CBCT Reconstruction." arXiv preprint arXiv:2209.14540 (2022).
 
-Nichol, A. Q., & Dhariwal, P. (2021). "Improved denoising diffusion probabilistic models." arXiv preprint arXiv:2102.09672 (2021).
+[2] Nichol, A. Q., & Dhariwal, P. (2021). "Improved denoising diffusion probabilistic models." arXiv preprint arXiv:2102.09672 (2021).
 
-Durrer, A., et al.: "fastWDM3D: Fast and Accurate 3D Healthy Tissue Inpainting." arXiv preprint arXiv:2507.13146 (2025).
+[3] Durrer, A., et al.: "fastWDM3D: Fast and Accurate 3D Healthy Tissue Inpainting." arXiv preprint arXiv:2507.13146 (2025).
+
+[4] Biguri, A., et al.:"TIGRE v3: Efficient and easy to use iterative computed tomographic reconstruction toolbox for real datasets." arXiv preprint arXiv:2412.10129 (2024).

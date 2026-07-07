@@ -32,8 +32,8 @@ SAMPLE_FLAGS="--random_masks False --log_dir $SAMPLE_DIR"
 
 PROJECT_ROOT=~/inr-diffusion/src
 
-TRAIN_SCRIPT="$PROJECT_ROOT/cbct_artifact_reduction/scripts/train_test.py"
-SAMPLE_SCRIPT="$PROJECT_ROOT/cbct_artifact_reduction/scripts/sample_test_series.py"
+TRAIN_SCRIPT="$PROJECT_ROOT/ddpm_model/scripts/train_test.py"
+SAMPLE_SCRIPT="$PROJECT_ROOT/ddpm_model/scripts/sample_test_series.py"
 
 export PYTHONPATH=$PROJECT_ROOT:$PYTHONPATH
 
