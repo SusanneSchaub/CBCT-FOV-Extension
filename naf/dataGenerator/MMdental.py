@@ -67,7 +67,7 @@ def config_parser():
                         help="Name of output data")
     parser.add_argument("--dataFolder", default="raw", type=str,
                         help="folder of raw data")
-    parser.add_argument("--outputFolder", default="/home/s.schaub/MMDental/pickle_files", type=str,         #"./data"
+    parser.add_argument("--outputFolder", default="", type=str,         #"./data"
                         help="folder of output data")
     return parser
 
@@ -84,7 +84,7 @@ def main():
 
     nbr = 537
 
-    configPath = "/home/s.schaub/naf_meta_learned/dataGenerator/raw/jaw/MMdental.yml"
+    configPath = "./dataGenerator/raw/jaw/MMdental.yml"
 
     outputPath = osp.join(outputFolder, f"{str(nbr)}_projections.pickle")
     generator(matPath, configPath, outputPath, nbr,True)
@@ -159,7 +159,7 @@ def loadImage(dirname, nVoxels, convert, rescale_slope, rescale_intercept, nbr, 
     Load CT image.
     """
 
-    pth = "/home/s.schaub/MMDental/537.nii.gz"
+    pth = ""
 
     header = nib.load(pth).header
     print(header["pixdim"])
