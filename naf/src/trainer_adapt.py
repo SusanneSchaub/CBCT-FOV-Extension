@@ -5,7 +5,6 @@ import pdb
 import time
 #import muon
 #print(dir(muon))
-#breakpoint()
 
 import torch
 from torch.utils.tensorboard import SummaryWriter
@@ -32,9 +31,6 @@ def seed_everything(seed=11):
 
 seed_everything()
 
-#from level_mask import get_mask
-
-#os.environ["CUDA_VISIBLE_DEVICES"] = "1"
 
 
 class Trainer:
@@ -64,18 +60,13 @@ class Trainer:
         self.expdir = osp.join(cfg["exp"]["expdir"], cfg["exp"]["expname"])
 
         self.num = num
-        #self.expdir = "/raid/cian/susanne.schaub/MMDental/NAF/" + num + "/" + cfg["exp"]["expname"]
 
-        self.ckptdir = osp.join("/raid/cian/user/susanne.schaub/pine/new_jaw_60/pretrain_140/jaw_50/", "ckpt.tar")
+
+        self.ckptdir = osp.join("", "ckpt.tar")
         self.ckptdir_backup = osp.join(self.expdir, "ckpt_backup.tar")
         self.evaldir = osp.join(self.expdir, "eval")
         os.makedirs(self.evaldir, exist_ok=True)
 
-        # Dataset
-        #path = '/raid/cian/susanne.schaub/meta_learn_volumes_rescaled/volumes_training'
-        #ds = get_dataset(path, eval=False)
-        #datal = torch.utils.data.DataLoader(ds, batch_size=1, shuffle=True)
-        #self.data = iter(datal)
     
         # Network
         if self.use_siren == True:
@@ -102,28 +93,13 @@ class Trainer:
             cfg["network"].pop("net_type", None)
             self.encoder = get_encoder(**cfg["encoder"])
             self.net = network(self.encoder, **cfg["network"]).to(device)
-            #state_dict = torch.load(cfg["exp"]["load_model"], map_location=device)
-            #self.net.load_state_dict(state_dict)
 
-
-        #all_params0 = {name: param.detach().cpu().clone() for name, param in self.net.named_parameters()}
-        #all_params1 = {name: param.detach().cpu().clone() for name, param in self.net.named_parameters()}
-
-        #for name in all_params0.keys() & all_params1.keys():
-        #    diff = all_params0[name] - all_params1[name]
-        #    pct = torch.count_nonzero(diff).float() / diff.numel() * 100
-        #    print(f"{name}: {pct:.4f}%")
 
 
         self.net_fine = None
 
         if cfg["train"]["use_muon"] == False:
             print("no Muon")
-            grad_vars = list(self.net.parameters())
-            #if self.n_fine > 0:
-            #    self.net_fine = network(encoder, **cfg["network"]).to(device)
-            #    grad_vars += list(self.net_fine.parameters())
-            #self.optimizer = torch.optim.SGD(self.net.parameters(), lr=self.lr_adapt)
             self.optimizer = torch.optim.Adam(self.net.parameters(), lr=self.lr_adapt)
             self.lr_scheduler = torch.optim.lr_scheduler.StepLR(optimizer=self.optimizer, step_size=cfg["train"]["lrate_step"], gamma=cfg["train"]["lrate_gamma"])
         else:
@@ -149,9 +125,6 @@ class Trainer:
             self.optimizer = SingleDeviceMuonWithAuxAdam(param_groups)
             self.lr_scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(self.optimizer, T_max=cfg["train"]["epochs_adapt"],eta_min=1e-6)
 
-
-        # self.lr_scheduler = torch.optim.lr_scheduler.ExponentialLR(
-        #     optimizer=self.optimizer, gamma=cfg["train"]["lrate_gamma"])
 
 
         # Load checkpoints
@@ -186,15 +159,7 @@ class Trainer:
 
         start_time_adaption = time.perf_counter()
 
-        #projection_path_adapt_volume = "/raid/cian/susanne.schaub/meta_learn_volumes_resized_512_512/adapt/300/300_projections.pickle"
-        #projection_path_adapt_volume = "/raid/cian/susanne.schaub/meta_learn_volumes_rescaled/adapt/60/60_projections.pickle"
-        #projection_path_adapt_volume = "/raid/cian/susanne.schaub/stripes_meta_learn_volumes_resized_512_512/adapt/1_projections.pickle"
-
-        #projection_path_adapt_volume = "/home/s.schaub/MMDental/pickle_files/537_projections.pickle"
-        #projection_path_adapt_volume = "/raid/cian/susanne.schaub/MMDental/pickle_files/" + self.num + "_projections.pickle"
-
-        projection_path_adapt_volume = "/raid/cian/susanne.schaub/MMDental/pickle_files/all/" + "4" + "_projections.pickle"
-        #projection_path_adapt_volume = "/raid/cian/susanne.schaub/meta_learn_volumes_resized_512_512/planmeca/300/300_projections.pickle"
+        projection_path_adapt_volume = "" + "_projections.pickle"
         print(projection_path_adapt_volume)
 
 
@@ -203,7 +168,6 @@ class Trainer:
         self.eval_dset = Dataset(projection_path_adapt_volume, self.conf["train"]["n_rays"], "val", self.device,self.inner_steps, adapt_state, outpaint=self.outpaint) if self.i_eval > 0 else None
         train_dloader = torch.utils.data.DataLoader(self.train_dset, batch_size=self.conf["train"]["n_batch_adapt"],shuffle=True)
 
-        #init_sirt = nib.load("/raid/cian/susanne.schaub/data_for_diffusion/planmeca/60/jaw_50/eval/adapt_epoch_01000/image_pred.nii.gz").get_fdata()
         init_sirt = np.zeros((256,256,256))
 
         self.img_init = (torch.tensor(init_sirt).to(self.device)).float()
@@ -222,7 +186,6 @@ class Trainer:
                 with torch.no_grad():
                     if idx_epoch_adapt!=0:#(idx_epoch_adapt % 25 == 0):
                             self.save_outpainted_projections(self.img_init, idx_epoch=idx_epoch_adapt, train_dset=self.train_dset, adapted_model=self.net,adapt_epoch=True, use_siren=self.use_siren)
-                            aaa=1
                     loss_test = self.eval_step(self.img_init, global_step=self.global_step, idx_epoch=idx_epoch_adapt, adapt_epoch=True, use_siren=self.use_siren)
                     #torch.save(self.net.state_dict(), self.expdir + "adapted_model.pth")
                 self.net.train()
@@ -234,17 +197,7 @@ class Trainer:
                 breakpoint()
 
                 self.global_step += 1
-                #print(self.global_step)
-                # loss_train_projections = self.train_step_projections(data, global_step=self.global_step, idx_epoch=idx_epoch_adapt)
-                # pbar.set_description(f"epoch={idx_epoch_adapt}/{self.epochs_adapt}, loss={loss_train_projections:.3g}, lr={self.optimizer.param_groups[0]['lr']:.3g}")
-                # pbar.update(1)
                 self.maml_adapt(data, self.img_init, global_step=self.global_step, idx_epoch=idx_epoch_adapt)
-                # print(self.global_step)
-
-            #with torch.no_grad():
-            #    w = next(self.net.parameters())
-            #    print("mean weight:", w.mean().item())
-
 
 
         tqdm.write(f"Adpatation complete! See logs in {self.expdir}")
